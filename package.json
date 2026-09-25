@@ -1,0 +1,16 @@
+{
+  "name": "shim-diophantine-review",
+  "version": "1.0.0",
+  "private": true,
+  "description": "束流整形磁铁垫片整数校正量复核系统（任意精度丢番图方程判定）",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test",
+    "build-check": "node scripts/build-check.js",
+    "verify": "node scripts/verify.js"
+  }
+}

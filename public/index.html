@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>束流整形磁铁 · 垫片整数校正量复核</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>束流整形磁铁 · 垫片整数校正量复核</h1>
+    <p class="subtitle">任意精度整数丢番图方程组 A·x = b 可解性判定（Smith 正规形 · 可逆整数行变换证据）</p>
+  </header>
+
+  <main>
+    <section class="card" id="draft-card">
+      <div class="card-head">
+        <h2>1. 录入草稿</h2>
+        <div class="hint">系数与目标均按<strong>整数文本</strong>原样传输与呈现，不转浮点数；可远超 ±2<sup>53</sup>−1。</div>
+      </div>
+
+      <label class="field">
+        <span class="field-label">变量标识（逗号或空格分隔，每项为一个最小垫片单位的调整量）</span>
+        <input id="variables-input" type="text" value="shim_A, shim_B, shim_C" spellcheck="false" />
+      </label>
+
+      <div class="constraint-toolbar">
+        <span class="field-label">整系数约束矩阵与目标向量</span>
+        <div class="toolbar-btns">
+          <button type="button" id="add-row-btn" class="btn btn-ghost">＋ 添加约束行</button>
+          <button type="button" id="example-solvable-btn" class="btn btn-ghost btn-sm">载入：可解例</button>
+          <button type="button" id="example-obstruct-btn" class="btn btn-ghost btn-sm">载入：不可整除例</button>
+          <button type="button" id="example-bigint-btn" class="btn btn-ghost btn-sm">载入：超大整数例</button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table id="constraint-table">
+          <thead><tr id="matrix-head"></tr></thead>
+          <tbody id="matrix-body"></tbody>
+        </table>
+      </div>
+
+      <div class="submit-row">
+        <button type="button" id="submit-btn" class="btn btn-primary">发起复核</button>
+        <button type="button" id="cancel-btn" class="btn btn-danger" disabled>取消在途复核</button>
+        <span id="draft-flag" class="draft-flag" hidden></span>
+      </div>
+      <div id="form-error" class="form-error" hidden></div>
+    </section>
+
+    <section class="card" id="review-card">
+      <div class="card-head">
+        <h2>2. 复核结论</h2>
+        <div id="review-meta" class="hint">尚未发起复核。</div>
+      </div>
+      <div id="review-panel" class="review-panel">
+        <div class="empty-state">提交后在此展示精确整数校正量，或无解时的规范除尽障碍。</div>
+      </div>
+    </section>
+
+    <section class="card" id="detail-card" hidden>
+      <div class="card-head">
+        <h2>3. 约束明细（点选任一约束查看）</h2>
+      </div>
+      <div id="constraint-detail"></div>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
